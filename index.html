@@ -1,92 +1,466 @@
 <!DOCTYPE html>
-
 <html lang="tr">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="UTF-8">
+  <title>İnşaat Firması</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
 
-    <title>Benim Sitem</title>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      line-height: 1.6;
+    }
 
-    <style>
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.96);
+      padding: 16px 20px;
+      border-bottom: 1px solid #333;
+    }
 
-        body {
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-            font-family: Arial, sans-serif;
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: #d4af37;
+    }
 
-            background: #f2f2f2;
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      margin-left: 12px;
+    }
 
-            text-align: center;
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      background:
+        linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.82)),
+        url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+    }
 
-            padding: 60px 20px;
+    .hero-content {
+      max-width: 800px;
+    }
 
-        }
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 18px;
+      color: #fff;
+    }
 
-        .kutu {
+    .hero h1 span {
+      color: #d4af37;
+    }
 
-            max-width: 600px;
+    .hero p {
+      font-size: 19px;
+      color: #ddd;
+      margin-bottom: 28px;
+    }
 
-            margin: auto;
+    .btn {
+      display: inline-block;
+      background: #d4af37;
+      color: #111;
+      text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 6px;
+      font-weight: bold;
+      margin: 6px;
+    }
 
-            background: white;
+    .btn-dark {
+      background: transparent;
+      color: #fff;
+      border: 1px solid #d4af37;
+    }
 
-            padding: 40px;
+    section {
+      padding: 70px 20px;
+    }
 
-            border-radius: 20px;
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
 
-        }
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
 
-        h1 {
+    .section-title h2 {
+      font-size: 32px;
+      color: #d4af37;
+      margin-bottom: 10px;
+    }
 
-            color: #222;
+    .section-title p {
+      color: #bbb;
+    }
 
-        }
+    .about {
+      background: #181818;
+    }
 
-        p {
+    .about-text {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+      font-size: 18px;
+      color: #ddd;
+    }
 
-            color: #555;
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
 
-            font-size: 18px;
+    .service-card {
+      background: #1b1b1b;
+      border: 1px solid #2d2d2d;
+      padding: 28px 22px;
+      border-radius: 10px;
+    }
 
-        }
+    .service-card h3 {
+      color: #d4af37;
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
 
-        button {
+    .service-card p {
+      color: #bbb;
+    }
 
-            background: #222;
+    .why-us {
+      background: #181818;
+    }
 
-            color: white;
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
 
-            border: none;
+    .feature {
+      text-align: center;
+      background: #222;
+      padding: 25px;
+      border-radius: 10px;
+    }
 
-            padding: 14px 25px;
+    .feature strong {
+      display: block;
+      color: #d4af37;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
 
-            border-radius: 10px;
+    .projects-note {
+      text-align: center;
+      max-width: 700px;
+      margin: auto;
+      color: #bbb;
+      background: #1b1b1b;
+      padding: 35px;
+      border-radius: 10px;
+      border: 1px dashed #d4af37;
+    }
 
-            font-size: 16px;
+    .contact {
+      background: #181818;
+    }
 
-        }
+    .contact-box {
+      max-width: 700px;
+      margin: auto;
+      text-align: center;
+      background: #222;
+      padding: 35px 25px;
+      border-radius: 12px;
+    }
 
-    </style>
+    .contact-box p {
+      margin: 12px 0;
+      color: #ddd;
+    }
 
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      background: #090909;
+      color: #888;
+      font-size: 14px;
+    }
+
+    .whatsapp {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      background: #25d366;
+      color: white;
+      text-decoration: none;
+      padding: 14px 18px;
+      border-radius: 30px;
+      font-weight: bold;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+      z-index: 999;
+    }
+
+    @media (max-width: 800px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav a {
+        margin: 0 6px;
+        font-size: 13px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .services-grid,
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 55px 18px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="kutu">
+  <header>
+    <nav>
+      <div class="logo">FİRMA ADI</div>
 
-        <h1>Merhaba! 👋</h1>
+      <div>
+        <a href="#hakkimizda">Hakkımızda</a>
+        <a href="#hizmetler">Hizmetler</a>
+        <a href="#iletisim">İletişim</a>
+      </div>
+    </nav>
+  </header>
 
-        <p>Bu benim ilk internet sitem.</p>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Güvenle İnşa Ediyor, <span>Kaliteyle Teslim Ediyoruz</span></h1>
 
-        <p>Web siteme hoş geldin!</p>
+      <p>
+        Konut, villa, iş yeri ve ticari yapı projelerinde kaliteli işçilik,
+        sağlam malzeme ve zamanında teslim anlayışıyla hizmet veriyoruz.
+      </p>
 
-        <button>Merhaba!</button>
-
+      <a class="btn" href="#iletisim">Teklif Al</a>
+      <a class="btn btn-dark" href="#hizmetler">Hizmetlerimizi İncele</a>
     </div>
+  </section>
+
+  <section id="hakkimizda" class="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>Hakkımızda</h2>
+        <p>Güvenilir ve profesyonel inşaat çözümleri</p>
+      </div>
+
+      <div class="about-text">
+        Yılların verdiği tecrübe ile konut, villa, iş yeri ve ticari yapı
+        projelerinde kaliteli işçilik, sağlam malzeme ve zamanında teslim
+        anlayışıyla hizmet veriyoruz. Müşteri memnuniyetini ön planda tutarak
+        her projeyi güven, kalite ve profesyonellikle hayata geçiriyoruz.
+      </div>
+    </div>
+  </section>
+
+  <section id="hizmetler">
+    <div class="container">
+      <div class="section-title">
+        <h2>Hizmetlerimiz</h2>
+        <p>İhtiyacınıza uygun kaliteli ve uzun ömürlü çözümler</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+          <h3>Anahtar Teslim İnşaat</h3>
+          <p>
+            Projelendirmeden teslim aşamasına kadar bütün süreci titizlikle
+            yönetiyoruz.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h3>Villa ve Konut Yapımı</h3>
+          <p>
+            Modern, estetik, sağlam ve kullanışlı yaşam alanları inşa ediyoruz.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h3>İşyeri ve Ticari Yapılar</h3>
+          <p>
+            İşletmenizin ihtiyaçlarına uygun fonksiyonel ve kaliteli yapılar
+            üretiyoruz.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h3>Tadilat ve Dekorasyon</h3>
+          <p>
+            Ev, ofis ve iş yerlerinizi modern tasarım ve uygulamalarla
+            yeniliyoruz.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h3>Boya, Alçı ve Alçıpan</h3>
+          <p>
+            Profesyonel ekiplerimizle temiz, düzenli ve kaliteli uygulamalar
+            gerçekleştiriyoruz.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h3>Mantolama ve Yalıtım</h3>
+          <p>
+            Enerji tasarrufu sağlayan, uzun ömürlü dış cephe ve yalıtım
+            çözümleri sunuyoruz.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h3>İnşaat Taahhüt ve Proje Yönetimi</h3>
+          <p>
+            Projelerinizi planlıyor, uyguluyor ve belirlenen zamanda teslim
+            ediyoruz.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="why-us">
+    <div class="container">
+      <div class="section-title">
+        <h2>Neden Bizi Tercih Etmelisiniz?</h2>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <strong>Kaliteli İşçilik</strong>
+          Deneyimli ekip ve güvenilir uygulama
+        </div>
+
+        <div class="feature">
+          <strong>Zamanında Teslim</strong>
+          Planlı ve disiplinli çalışma sistemi
+        </div>
+
+        <div class="feature">
+          <strong>Şeffaf Hizmet</strong>
+          Açık iletişim ve güvenilir fiyatlandırma
+        </div>
+
+        <div class="feature">
+          <strong>Sağlam Malzeme</strong>
+          Uzun ömürlü ve kaliteli yapı çözümleri
+        </div>
+
+        <div class="feature">
+          <strong>Uzman Ekip</strong>
+          Alanında deneyimli profesyoneller
+        </div>
+
+        <div class="feature">
+          <strong>Müşteri Memnuniyeti</strong>
+          Her aşamada ihtiyaçlarınıza uygun hizmet
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Projelerimiz</h2>
+        <p>Tamamlanan çalışmalarımız yakında bu bölümde yer alacak</p>
+      </div>
+
+      <div class="projects-note">
+        Tamamladığımız projelerin fotoğraflarını daha sonra bu bölüme
+        ekleyeceğiz.
+      </div>
+    </div>
+  </section>
+
+  <section id="iletisim" class="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>İletişim</h2>
+        <p>Projeniz hakkında bilgi ve ücretsiz teklif almak için bize ulaşın</p>
+      </div>
+
+      <div class="contact-box">
+        <p><strong>Telefon:</strong> 05XX XXX XX XX</p>
+        <p><strong>WhatsApp:</strong> 05XX XXX XX XX</p>
+        <p><strong>E-posta:</strong> firma@ornek.com</p>
+        <p><strong>Hizmet Bölgesi:</strong> Şehir / İlçe</p>
+
+        <a class="btn" href="tel:+905000000000">Hemen Ara</a>
+        <a class="btn btn-dark" href="https://wa.me/905000000000">
+          WhatsApp'tan Yaz
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Firma Adı — Tüm hakları saklıdır.
+  </footer>
+
+  <a class="whatsapp" href="https://wa.me/905000000000">
+    WhatsApp
+  </a>
 
 </body>
-
 </html>
-
